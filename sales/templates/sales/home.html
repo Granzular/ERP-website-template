@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+sales
+{% endblock title %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'sales/js/home.js'%}" defer></script>
+<style>
+.modal-dialog ,.modal{
+	height:100vh;
+	width:100vw;
+
+}
+</style>
+{% endblock scripts %}
+{% block content %}
+
+<!-- Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="reportModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body " id="modal-body" >
+        ...
+        <div id="alert-box"></div>                        <form id="report-form">
+		{{report_form|crispy}}
+	</form>                                    <button type="button" class="btn btn-info mt-2">Save</button>                                                                                        </div>                   </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% if no_data %}
+<div class="alert alert-warning" role="alert">
+	{{ no_data }}
+</div>
+{% endif %}
+<form action="" method="POST">
+	{% csrf_token %}
+	{{ searchform|crispy }}
+	
+	<button type="submit" class="btn btn-primary mt-3">Search</button>
+</form>
+
+{% if sales_df %}
+<h3>SALES</h3>
+{{sales_df|safe}}
+<br>
+<h3>POSITIONS</h3>
+{{positions_df|safe}}
+<br>
+<h3>MERGED</h3>
+{{merged_df|safe}}
+<br>
+<h3>DF</h3>
+{{df|safe}}
+
+<img src="data:image/png;base64,{{chart|safe}}" alt='chart for data frame' id="img">
+
+<button class="btn btn-primary not-visible" id="report-btn" data-bs-toggle="modal" data-bs-target="#reportModal">add report</button>
+{% endif %}
+
+{% endblock content %}
