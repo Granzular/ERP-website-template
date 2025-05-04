@@ -22,11 +22,11 @@ sales
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="reportModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="reportModalLabel">Save Report</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body " id="modal-body" >
-        ...
+
         <div id="alert-box"></div>                        <form id="report-form">
 		{{report_form|crispy}}
 	</form>                                    <button type="button" class="btn btn-info mt-2">Save</button>                                                                                        </div>                   </div>
@@ -64,7 +64,7 @@ sales
 
 <img src="data:image/png;base64,{{chart|safe}}" alt='chart for data frame' id="img">
 
-<button class="btn btn-primary not-visible" id="report-btn" data-bs-toggle="modal" data-bs-target="#reportModal">add report</button>
+<button class="btn btn-primary not-visible mt-20" id="report-btn" data-bs-toggle="modal" data-bs-target="#reportModal">add report</button>
 {% endif %}
 
 {% endblock content %}
