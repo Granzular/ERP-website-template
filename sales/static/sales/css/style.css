@@ -1,7 +1,13 @@
 *{
 	margin:5px;
 }
-
 body{
-	background-color:lightblue;
+	
+}
+
+
+
+/* Main body style */
+.table-and-chart{
+	overflow-x:scroll;
 }

@@ -11,7 +11,7 @@ except:
     print('couldnt connect, defaulting to 127.0.0.1')
     pass
 
-cmd = f'python manage.py runserver {ip}:{port}'
+cmd = f'python manage.py runserver {ip}:{port} --settings=mysite.settings.development'
 print(ip)
 
 

@@ -29,7 +29,7 @@ sales
 
         <div id="alert-box"></div>                        <form id="report-form">
 		{{report_form|crispy}}
-	</form>                                    <button type="button" class="btn btn-info mt-2">Save</button>                                                                                        </div>                   </div>
+	</form>                                    <button type="button" class="btn btn-info mt-2" id="add-report-btn">Add Report</button>                                                                                        </div>                   </div>
       </div>
 
     </div>
@@ -49,20 +49,18 @@ sales
 	<button type="submit" class="btn btn-primary mt-3">Search</button>
 </form>
 
-{% if sales_df %}
-<h3>SALES</h3>
-{{sales_df|safe}}
-<br>
-<h3>POSITIONS</h3>
-{{positions_df|safe}}
-<br>
-<h3>MERGED</h3>
-{{merged_df|safe}}
-<br>
-<h3>DF</h3>
-{{df|safe}}
+{% if merged_df %}
 
+<br>
+<div class="table-and-chart">
+<h3>TABLE</h3>
+{{merged_df|safe}}
+</div>
+<br>
+
+<div class="table-and-chart">
 <img src="data:image/png;base64,{{chart|safe}}" alt='chart for data frame' id="img">
+</div>
 
 <button class="btn btn-primary not-visible mt-20" id="report-btn" data-bs-toggle="modal" data-bs-target="#reportModal">add report</button>
 {% endif %}

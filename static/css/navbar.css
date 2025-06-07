@@ -1,0 +1,12 @@
+/* Navbar */
+.nav-item .active {
+	 background-color: green;
+	 border-radius: 10px;
+}
+
+.profile img{
+	 width:30px;
+	 height: 30px;
+	 border-radius: 50;
+	 
+}
