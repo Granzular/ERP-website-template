@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+reports detail
+{% endblock title %}
+
+{% block content %}
+<div class="card " >
+        <img src="{{report.image.url}}" class="card-img-top pl-2 w-100 h-100" >                                              <div class="card-body">                                       <h5 class="card-title">{{report.name}}</h5>
+		<strong>Remark</strong>
+		<p class="card-text">{{report.remark}}</p>
+        		<strong>Author</strong>
+		<p class="card-text">
+				{{report.author.profile.user.username}}
+		</p>
+        		<strong>Created</strong>
+		<p class="card-text">
+				{{report.created}}
+		</p>
+
+  </div>
+</div>
+{% endblock content %}

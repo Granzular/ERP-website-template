@@ -1,5 +1,6 @@
 from django.db import models
 from profiles.models import Profile
+from django.urls import reverse
 
 # Create your models here.
 
@@ -13,5 +14,9 @@ class Report(models.Model):
 
 
     def __str__(self):
+        
         return str(self.name)
 
+    def get_absolute_url(self):
+
+        return reverse("reports:detail",kwargs={'pk':self.pk})

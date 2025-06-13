@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+report list
+{% endblock title %}
+
+{% block content %}
+{% if reports %}
+{% for report in reports %}
+<div class="card " >
+        <img src="{{report.image.url}}" class="card-img-top pl-2 w-100 h-100" >                                              <div class="card-body">                                       <h5 class="card-title">{{report.name}}</h5>
+		<strong>Remark</strong>
+		<p class="card-text">{{report.remark|truncatewords:20}}</p>
+
+    <a href="{{report.get_absolute_url}}" class="btn btn-danger mt-3 w-50">Details</a>
+  </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="alert alert-warning" role="alert">
+		No Reports Available
+</div>
+{% endif %}
+{% endblock content %}

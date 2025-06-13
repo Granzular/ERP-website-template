@@ -5,10 +5,12 @@ from .forms import SalesSearchForm
 import pandas as pd
 from .utils import get_customer_from_id, get_salesman_from_id,get_chart
 from reports.forms import ReportForm
-# Create your views here.
+
 
 def index(request):
-    return render(request,'sales/index.html');
+    return render(request,'sales/index.html')
+
+
 def home_view(request):
     search_form = SalesSearchForm(request.POST or None)
     report_form = ReportForm()
@@ -44,7 +46,7 @@ def home_view(request):
                             "price":pos.price,
                             "sales_id":pos.get_sales_id(),
                             }
-                    print(pos.get_sales_id())
+                    
                     positions_data.append(obj)
             positions_df = pd.DataFrame(positions_data)
             merged_df = pd.merge(sales_df,positions_df,on="sales_id")
@@ -82,3 +84,4 @@ class SaleListView(ListView):
 class SaleDetailView(DetailView):
     model = Sale
     template_name = 'sales/detail.html'
+
