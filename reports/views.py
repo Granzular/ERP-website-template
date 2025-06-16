@@ -2,9 +2,9 @@ from django.shortcuts import render
 from .models import Report
 from django.views.generic import DetailView, ListView
 from profiles.models import Profile
-from django.http import JsonResponse
-from .utils import get_report_image
-# Create your views here.
+from django.http import JsonResponse,FileResponse
+from .utils import get_report_image, get_report_pdf, cleanup
+
 
 class ReportList(ListView):
     
@@ -19,8 +19,11 @@ class ReportDetail(DetailView):
     template_name = "reports/detail.html"
     context_object_name = "report"
 
-def save_pdf(request):
-    pass
+def pdf(request,pk):
+    fd, filename= get_report_pdf(pk)
+    cleanup(filename)
+
+    return FileResponse(fd,filename=filename)
 
 def add_report(request):
     

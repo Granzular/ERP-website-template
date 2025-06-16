@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 report list
 {% endblock title %}
 
+{% block scripts %}
+<script src="{% static 'reports/js/pdf.js' %}"></script>
+{% endblock scripts %}
+
 {% block content %}
 {% if reports %}
+<form hidden="true">
+		{% csrf_token %}
+</form>
 {% for report in reports %}
-<div class="card " >
+<div class="card mb-5 p-3" >
         <img src="{{report.image.url}}" class="card-img-top pl-2 w-100 h-100" >                                              <div class="card-body">                                       <h5 class="card-title">{{report.name}}</h5>
 		<strong>Remark</strong>
 		<p class="card-text">{{report.remark|truncatewords:20}}</p>
 
-    <a href="{{report.get_absolute_url}}" class="btn btn-danger mt-3 w-50">Details</a>
+    <a href="{{report.get_absolute_url}}" class="btn btn-outline-primary mt-3 w-50">Details</a>
+    <a href="{% url 'reports:pdf' report.id  %}" class="btn btn-warning mt-3 pdf-btn" id="{{report.id}}">PDF</a>
   </div>
 </div>
 {% endfor %}
