@@ -9,7 +9,6 @@ from django.urls import reverse
 # Create your models here.
 
 class Position(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     price = models.FloatField(blank=True)

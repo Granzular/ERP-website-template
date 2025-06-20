@@ -25,7 +25,7 @@ def get_report_pdf(report_pk):
 	name = report.name + str(report.id)+ "_ralchemy.pdf"
 	remark = report.remark
 	author = report.author.user.username
-	created = report.created.strftime("%h %d,%Y. %H:%M %P")
+	created = report.created.strftime("%h %d,%Y. %H:%M %p")
 	image_path = os.path.abspath("") + report.image.url
 	print(image_path)
 	# Create the PDF document

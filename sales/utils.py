@@ -5,7 +5,7 @@ from customers.models import Customer
 from profiles.models import Profile
 from io import BytesIO
 import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 def generate_code()->str:
     '''generates a unique id using uuid module. id is limited to 12 characters'''
@@ -37,8 +37,8 @@ def get_chart(chart_type,result_by,d,**kwargs):
     d =(lambda x:d.groupby("created",as_index=False)['total_price'].agg('sum') if x=="created" else d)(key)
 
     if chart_type == '#1':
-        #plt.bar(d['transaction_id'],d['total_price'])
-        sns.barplot(x=key,y='total_price',data=d)
+        plt.bar(d['transaction_id'],d['total_price'])
+        
     elif chart_type == '#2':
 
         plt.pie(data=d,x="total_price",labels=key)
