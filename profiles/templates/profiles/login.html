@@ -1,0 +1,15 @@
+{% extends 'base.html' %}                         {% load crispy_forms_tags %}                            {% block title %}                                 Login
+{% endblock title %}                              
+{% block navbar %}
+{% endblock navbar %}                                                                               {% block content %}                                                                                 <form action="" method="POST">
+	{% csrf_token %}
+	{% if error %}
+	<div class="alert alert-danger" role="alert" >
+		{{ error }}
+	</div>
+	{% endif %}
+	{{login_form|crispy}}                             <button type="submit" class="btn btn-primary mt-4">Login</button>
+        <p>OR</p>                                         <a href="{% url 'profiles:signup' %}" class="btn btn-outline-primary mt-4 " >Signup </a>
+</form>
+
+{% endblock content %}

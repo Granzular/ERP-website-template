@@ -5,6 +5,7 @@ from django.urls import reverse
 # Create your models here.
 
 class Report(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='reports',blank=True)
     remark = models.TextField()

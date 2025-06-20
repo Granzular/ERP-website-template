@@ -23,16 +23,17 @@
   </div>
 </nav>
 <!-- Custom Nav-->
-<nav class="navbar navbar-expand-lg bg-body-tertiary ">
-  <div class="container-fluid">
-    <div style="width:70%;">
+<nav class="navbar-expand-lg bg-body-tertiary ">
+  <div class="container-fluid navcontainer">
+    <div class="frame1">
     </div>
-    <div class="profile">
+    <div class="frame2">
       {% if user.is_authenticated %}
-      <img src="{{user.profile.image.url}}">
-      <a href="/logout" class="btn">logout</a>
+      <img src="{{user.profile.avatar.url}}">
+      <a href="{% url 'profiles:logout' %}" class="btn">logout</a>
       {% else %}
-      <a href="/login">login</a>
+      <img src="">
+      <a href="{% url 'profiles:login' %}">login</a>
       {% endif %}
     </div>
   </div>

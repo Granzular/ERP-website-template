@@ -4,8 +4,10 @@ from django.views.generic import DetailView, ListView
 from profiles.models import Profile
 from django.http import JsonResponse,FileResponse
 from .utils import get_report_image, get_report_pdf, cleanup
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
-
+@method_decorator(login_required,name="dispatch")
 class ReportList(ListView):
     
     model = Report
@@ -13,18 +15,21 @@ class ReportList(ListView):
     context_object_name = "reports"
 
 
+@method_decorator(login_required,name="dispatch")
 class ReportDetail(DetailView):
 
     model = Report
     template_name = "reports/detail.html"
     context_object_name = "report"
 
+@login_required
 def pdf(request,pk):
     fd, filename= get_report_pdf(pk)
     cleanup(filename)
 
     return FileResponse(fd,filename=filename)
 
+@login_required
 def add_report(request):
     
     if request.headers.get("X-Requested-With")=="XMLHttpRequest":

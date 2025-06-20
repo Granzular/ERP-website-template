@@ -5,12 +5,13 @@ from .forms import SalesSearchForm
 import pandas as pd
 from .utils import get_customer_from_id, get_salesman_from_id,get_chart
 from reports.forms import ReportForm
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
     return render(request,'sales/index.html')
 
-
+@login_required
 def home_view(request):
     search_form = SalesSearchForm(request.POST or None)
     report_form = ReportForm()

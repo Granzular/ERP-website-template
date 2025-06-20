@@ -1,0 +1,16 @@
+{% extends 'profiles/login.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+signup
+{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'profiles:signup' %}" method="POST">
+	{% csrf_token %}
+	{{ signup_form|crispy}}
+	<button type="submit" class="btn btn-primary mt-4"> Signup </button>
+	<p> already have an account?</p>
+	<a href="{% url 'profiles:login' %}" class="btn btn-outline-primary mt-4">Login</a>
+</form>
+{% endblock content %}
