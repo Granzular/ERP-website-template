@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import CustomUser
+from .models import CustomUser, Organization, Staff
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import redirect,reverse
@@ -70,9 +70,9 @@ def signupview(request):
         if form.is_valid():
             cld = form.clean()
             if cld.get('user_type')=='org':
-                CustomUser.objects.create_user(username=cld.get('username'),email=cld.get('email'),password=cld.get('password'),user_type=cld_get('user_type'))
+                CustomUser.objects.create_user(username=cld.get('username'),email=cld.get('email'),password=cld.get('password'),user_type=cld.get('user_type'))
             elif cld.get('user_type')=='staff':
-                instance = CustomUser.objects.create_user(username=cld.get('username'),email=cld.get('email'),password=cld.get('password'),user_type=cld_get('user_type'))
+                instance = CustomUser.objects.create_user(username=cld.get('username'),email=cld.get('email'),password=cld.get('password'),user_type=cld.get('user_type'))
                 Staff.objects.create(user=instance,organization=get_org(cld.get('public_key')))
 
             return redirect(reverse('profiles:login'))

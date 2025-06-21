@@ -13,7 +13,11 @@ signup
 
 <form action="" method="POST" class="form">
 	{% csrf_token %}
-	
+	{% if  error %}
+	<div class="alert alert-danger" role="alert">
+		{{error}}
+	</div>
+	{% endif %}
 	{% for field in signup_form %}
 	{% if field.label == 'Public key' %}
 	<div hidden="true" id="public_key_div">

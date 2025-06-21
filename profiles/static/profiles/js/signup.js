@@ -10,6 +10,7 @@ const public_key_div = document.querySelector('#public_key_div ');
 		
 	}
 	else{
+		public_key_widget.value = '123456789'
 			public_key_widget.required = false
 		public_key_div.setAttribute("hidden","true");
 		

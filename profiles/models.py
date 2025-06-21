@@ -14,7 +14,7 @@ class Organization(models.Model):
     name = models.CharField(max_length=30)
     logo = models.ImageField(upload_to="logos",default="no_picture.png")
     user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
-    public_key = models.CharField(max_length=9,editable=False)
+    public_key = models.CharField(max_length=9)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
