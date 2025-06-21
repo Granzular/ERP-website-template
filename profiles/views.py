@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.contrib.auth.models import User
+from .models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import redirect,reverse
@@ -8,6 +8,7 @@ from .forms import LoginForm,SignupForm
 from django.urls import resolve
 from django.urls.exceptions import Resolver404
 from urllib.parse import urlparse
+from .utils import get_org
 
 def loginview(request):
     if request.method == "GET":
@@ -68,7 +69,12 @@ def signupview(request):
     elif request.method == "POST":
         if form.is_valid():
             cld = form.clean()
-            User.objects.create_user(username=cld.get('username'),email=cld.get('email'),password=cld.get('password'))
+            if cld.get('user_type')=='org':
+                CustomUser.objects.create_user(username=cld.get('username'),email=cld.get('email'),password=cld.get('password'),user_type=cld_get('user_type'))
+            elif cld.get('user_type')=='staff':
+                instance = CustomUser.objects.create_user(username=cld.get('username'),email=cld.get('email'),password=cld.get('password'),user_type=cld_get('user_type'))
+                Staff.objects.create(user=instance,organization=get_org(cld.get('public_key')))
+
             return redirect(reverse('profiles:login'))
         else:
             context = {

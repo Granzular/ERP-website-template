@@ -1,5 +1,5 @@
 from django.db import models
-from profiles.models import Profile
+from profiles.models import Staff 
 from django.urls import reverse
 
 # Create your models here.
@@ -8,7 +8,7 @@ class Report(models.Model):
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='reports',blank=True)
     remark = models.TextField()
-    author = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    author = models.ForeignKey(Staff,on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Report
 from django.views.generic import DetailView, ListView
-from profiles.models import Profile
+from profiles.models import Staff,Organization
 from django.http import JsonResponse,FileResponse
 from .utils import get_report_image, get_report_pdf, cleanup
 from django.contrib.auth.decorators import login_required
@@ -36,7 +36,7 @@ def add_report(request):
         name = request.POST.get('name')
         remark = request.POST.get('remark')
         image = get_report_image(request.POST.get('image'))
-        author = Profile.objects.get(user=request.user)
+        author = Staff.objects.get(user=request.user)
         Report.objects.create(name=name,remark=remark,image=image,author=author)
 
         return JsonResponse({'msg':'send'})

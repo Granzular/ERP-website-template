@@ -2,7 +2,7 @@
 modules contains helper functions for tge sales app'''
 import uuid,base64
 from customers.models import Customer
-from profiles.models import Profile
+from profiles.models import Staff
 from io import BytesIO
 import matplotlib.pyplot as plt
 
@@ -17,7 +17,7 @@ def get_customer_from_id(val):
     return customer.name
 
 def get_salesman_from_id(val):
-    salesman = Profile.objects.get(id=val)
+    salesman = Staff.objects.get(id=val)
     return salesman.user.username
 
 def get_graph():

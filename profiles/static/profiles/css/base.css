@@ -1,0 +1,11 @@
+form{
+  border-style:solid;
+  border-radius: 15px;
+  border-width:0.5px;
+  padding: 5px;
+}
+.extra-text{
+  /*targets the div tag that holds extra text in the form*/
+  text-align: center;
+}
+

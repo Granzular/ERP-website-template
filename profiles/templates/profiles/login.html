@@ -1,15 +1,24 @@
-{% extends 'base.html' %}                         {% load crispy_forms_tags %}                            {% block title %}                                 Login
-{% endblock title %}                              
+{% extends 'base.html' %}                         {% load crispy_forms_tags %}     
+{% load static %}
+{% block title %}                                 Login
+{% endblock title %}   
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'profiles/css/base.css' %}">
+{% endblock style %}
+
 {% block navbar %}
-{% endblock navbar %}                                                                               {% block content %}                                                                                 <form action="" method="POST">
+{% include 'profiles/navbar.html' %}
+{% endblock navbar %}                                                                               {% block content %}                                                                                <form action="" method="POST" class="form">
 	{% csrf_token %}
 	{% if error %}
 	<div class="alert alert-danger" role="alert" >
 		{{ error }}
 	</div>
 	{% endif %}
-	{{login_form|crispy}}                             <button type="submit" class="btn btn-primary mt-4">Login</button>
-        <p>OR</p>                                         <a href="{% url 'profiles:signup' %}" class="btn btn-outline-primary mt-4 " >Signup </a>
+	{{login_form|crispy}}                             <button type="submit" class="btn btn-success mt-4 form-control">Login</button>
+        <div class="extra-text">don't have an account? </div>             
+	<button class="btn btn-outline-success mt-4 mb-2 form-control" onClick=window.location="{% url 'profiles:signup' %}">Signup</button>
 </form>
 
 {% endblock content %}

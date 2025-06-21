@@ -1,6 +1,6 @@
 from django.db import models
 from products.models import Product
-from profiles.models import Profile
+from profiles.models import Staff
 from customers.models import Customer
 from django.utils import timezone
 from .utils import generate_code
@@ -31,7 +31,7 @@ class Sale(models.Model):
     positions = models.ManyToManyField(Position)
     total_price = models.FloatField(blank=True,null=True)
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
-    salesman = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    salesman = models.ForeignKey(Staff,on_delete=models.CASCADE)
     created = models.DateTimeField(blank=True)
     updated = models.DateTimeField(auto_now=True)
 

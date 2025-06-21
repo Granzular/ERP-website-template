@@ -1,16 +1,34 @@
 {% extends 'profiles/login.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block title %}
 signup
-{% endblock %}
+{% endblock title %}
+
+{% block scripts %}
+<script src="{% static 'profiles/js/signup.js' %}" defer ></script>
+{% endblock scripts %}
 
 {% block content %}
 
-<form action="{% url 'profiles:signup' %}" method="POST">
+<form action="" method="POST" class="form">
 	{% csrf_token %}
-	{{ signup_form|crispy}}
-	<button type="submit" class="btn btn-primary mt-4"> Signup </button>
-	<p> already have an account?</p>
-	<a href="{% url 'profiles:login' %}" class="btn btn-outline-primary mt-4">Login</a>
+	
+	{% for field in signup_form %}
+	{% if field.label == 'Public key' %}
+	<div hidden="true" id="public_key_div">
+		{{field|as_crispy_field}}
+	</div>
+	{% else %}
+	
+	{{field|as_crispy_field}}
+	{% endif %}
+	{% endfor %}
+
+		
+	<button type="submit" class="btn btn-success mt-4 form-control"> Signup </button>
+	<div class="extra-text"> already have an account?</div>
+	<button class="btn btn-outline-success mt-4 mb-2 form-control" onClick=window.location="{% url 'profiles:login' %}">Login</button>
 </form>
+
 {% endblock content %}
