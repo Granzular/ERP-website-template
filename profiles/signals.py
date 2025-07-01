@@ -8,5 +8,5 @@ def post_save_create_org_or_staff(sender,instance,created,**kwargs):
     if created:
         if instance.user_type=='org':
             public_key = str(uuid.uuid4())[:9]
-            Organization.objects.create(user=instance,public_key=public_key)
+            Organization.objects.create(user=instance,public_key=public_key,name=instance.username)
             

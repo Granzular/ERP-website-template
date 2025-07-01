@@ -31,14 +31,25 @@ sales
 		{{report_form|crispy}}
 		<button type="submit" class="btn btn-info mt-2" id="save-report-btn">Save Report</button>
 	</form>
-      </div>                   </div>
+      </div>
+    </div>
       </div>
 
     </div>
   </div>
 </div>
 
+<!--dropzone-->
+<h3>Upload File</h3>
+<form id="myDropzone" class="dropzone mb-5">
+	<div id="dz-alert-box"></div>
+	{% csrf_token %}
+<div class="dz-message">
+	drop csv file here or click to upload
+</div>
+</form>
 
+	<h3>Search</h3>
 {% if no_data %}
 <div class="alert alert-warning" role="alert">
 	{{ no_data }}
@@ -51,12 +62,12 @@ sales
 	<button type="submit" class="btn btn-primary mt-3">Search</button>
 </form>
 
-{% if merged_df %}
+{% if sales_df %}
 
 <br>
 <div class="table-and-chart">
 <h3>TABLE</h3>
-{{merged_df|safe}}
+{{sales_df|safe}}
 </div>
 <br>
 

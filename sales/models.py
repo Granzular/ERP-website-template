@@ -1,6 +1,6 @@
 from django.db import models
 from products.models import Product
-from profiles.models import Staff
+from profiles.models import Staff,Organization
 from customers.models import Customer
 from django.utils import timezone
 from .utils import generate_code
@@ -12,6 +12,7 @@ class Position(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     price = models.FloatField(blank=True)
+    organization = models.ForeignKey(Organization,on_delete=models.CASCADE)
     created = models.DateTimeField(blank=True)
 
     def save(self,*args,**kwargs):
@@ -32,6 +33,7 @@ class Sale(models.Model):
     total_price = models.FloatField(blank=True,null=True)
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
     salesman = models.ForeignKey(Staff,on_delete=models.CASCADE)
+    organization = models.ForeignKey(Organization,on_delete=models.CASCADE)
     created = models.DateTimeField(blank=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -56,6 +58,7 @@ class Sale(models.Model):
 class CSV(models.Model):
    file_name = models.FileField(upload_to="csvs")
    activated = models.BooleanField(default=False)
+   organization = models.ForeignKey(Organization,on_delete=models.CASCADE)
    created = models.DateTimeField(auto_now_add=True)
    updated = models.DateTimeField(auto_now=True)
 

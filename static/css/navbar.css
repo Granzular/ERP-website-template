@@ -22,18 +22,21 @@
 	 width:30px;
 	 height: 30px;
 	 border-radius: 50%;
+	 border-style:solid;
+	 border-color:green;
 	 padding: 0;
 	 margin: 0;
-	 border-style:solid;
-	 
-	 
 }
 .frame2 a{
 	 font-size: medium;
 	 padding-bottom: 0px;
 	 padding: 0;
 	 margin: 0;
-	 
-	 
+}
+
+.navbrand{
+	 /* bootstrap class*/
+	 color:green;
+	 font-style: italic;
 }
 

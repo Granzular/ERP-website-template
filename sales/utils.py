@@ -37,7 +37,7 @@ def get_chart(chart_type,result_by,d,**kwargs):
     d =(lambda x:d.groupby("created",as_index=False)['total_price'].agg('sum') if x=="created" else d)(key)
 
     if chart_type == '#1':
-        plt.bar(d['transaction_id'],d['total_price'])
+        plt.bar(d[key],d['total_price'])
         
     elif chart_type == '#2':
 

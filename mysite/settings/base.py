@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #custom apps for mysite
+    'index',
     'products',
     'customers',
     'reports',

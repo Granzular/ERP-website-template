@@ -9,6 +9,31 @@ from django.urls import resolve
 from django.urls.exceptions import Resolver404
 from urllib.parse import urlparse
 from .utils import get_org
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def home(request):
+    return render(request,"profiles/home.html")
+
+@login_required
+def edit_profile(request):
+    form = "work on this later"
+    context = {
+            "form":form,
+            }
+    return render(request,"profile/home.html",context)
+
+@login_required
+def edit_profile_pic(request):
+
+    if request.method == "POST":
+        fd = request.FILES.get("profile_pic")
+        if fd is not None:
+            request.user.staff.avatar = fd
+            request.user.staff.save()
+        return redirect(reverse("profiles:home"))
+    else:
+        return redirect(reverse("profiles:home")) 
 
 def loginview(request):
     if request.method == "GET":

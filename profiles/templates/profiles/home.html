@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'profiles/css/home.css' %}">
+{% endblock style %}
+{% block scripts %}
+<script src="{% static 'profiles/js/home.js' %}"></script>
+{% endblock scripts %}
+{% block title %}
+Profile
+{% endblock title %}
+
+{% block content %}
+ <div id="framex" >
+   <div id="menubar"><p id="menubar-return">&lt&ltback</p></div>
+   <div id="profile-picx-frame">
+    <img id="profile-picx" src="{{user.staff.avatar.url}}">
+   </div>
+ </div>
+<div>
+  <div id="frame1" class="bg-body-tertiary">
+    <img id="profile-pic" src="{{user.staff.avatar.url}}"><i class="fa-solid fa-pen-to-square" id="edit-profile-pic"></i>
+   
+   <form enctype="multipart/form-data" method="POST" action="{% url 'profiles:edit_profile_pic' %}" hidden="true" id="profile_pic_form">
+    {% csrf_token %}
+   <input name="profile_pic" type="file" accept=".png" hidden id="fileupload" >
+    
+   </form>
+   <h2>{{user.staff.user.username}}</h2>
+  </div>
+  <div id="frame2"></div>
+  
+  <p><b>Role:</b>Staff</p>
+   <p><b>Organization:</b>{{user.staff.organization.name}}</p>
+</div>
+{% endblock content %}

@@ -1,15 +1,14 @@
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView
-from .models import Sale
+from django.views import View
+from .models import Sale, CSV
 from .forms import SalesSearchForm
 import pandas as pd
 from .utils import get_customer_from_id, get_salesman_from_id,get_chart
 from reports.forms import ReportForm
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
-
-def index(request):
-    return render(request,'sales/index.html')
 
 @login_required
 def home_view(request):
@@ -22,11 +21,12 @@ def home_view(request):
     chart = None
     no_data = None
     if request.method == "POST":
+        org = request.user.staff.organization
         date_from = request.POST.get("date_from")
         date_to = request.POST.get("date_to")
         chart_type = request.POST.get("chart_type")
         result_by = request.POST.get("result_by")
-        sale_qs = Sale.objects.filter(created__date__gte=date_from,created__date__lte=date_to)
+        sale_qs = Sale.objects.filter(organization=org,created__date__gte=date_from,created__date__lte=date_to)
         if len(sale_qs) >0:
             sales_df = pd.DataFrame(sale_qs.values())
             sales_df["customer_id"] = sales_df["customer_id"].apply(get_customer_from_id)
@@ -50,14 +50,8 @@ def home_view(request):
                     
                     positions_data.append(obj)
             positions_df = pd.DataFrame(positions_data)
-            merged_df = pd.merge(sales_df,positions_df,on="sales_id")
-            df = merged_df.groupby("transaction_id",as_index=False)['price'].agg('sum')
-
             chart = get_chart(chart_type,result_by,sales_df)
-            positions_df = positions_df.to_html()
             sales_df = sales_df.to_html()
-            merged_df = merged_df.to_html()
-            df = df.to_html()
              
         else:
             no_data = "No data available from the selected date range"
@@ -67,9 +61,6 @@ def home_view(request):
                "searchform":search_form,
                "report_form":report_form,
                "sales_df":sales_df,
-               "positions_df":positions_df,
-               "merged_df":merged_df,
-               "df":df,
                "chart":chart,
                "no_data":no_data,
                }
@@ -78,11 +69,22 @@ def home_view(request):
 
     return render(request,'sales/home.html',context)
 
-class SaleListView(ListView):
-    model = Sale
-    template_name = 'sales/main.html'
+class SalesDashboard(View):
+
+    def get(self,request):
+        return render(request,"sales/main.html")
+
    
 class SaleDetailView(DetailView):
     model = Sale
     template_name = 'sales/detail.html'
 
+@login_required
+def upload_csv(request):
+    if request.headers.get("X-Requested-With")=="XMLHttpRequest":
+        fd = request.FILES.get("file")
+        if fd == None:
+            raise ValueError
+        CSV.objects.create(file_name=fd,organization=request.staff.organization)
+        return JsonResponse({})
+    return JsonResponse({})

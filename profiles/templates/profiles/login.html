@@ -9,7 +9,10 @@
 
 {% block navbar %}
 {% include 'profiles/navbar.html' %}
-{% endblock navbar %}                                                                               {% block content %}                                                                                <form action="" method="POST" class="form">
+{% endblock navbar %}                                                                               {% block content %}     
+<main>
+<form action="" method="POST" class="form mt-5">
+	<h1>Login</h1>
 	{% csrf_token %}
 	{% if error %}
 	<div class="alert alert-danger" role="alert" >
@@ -20,5 +23,6 @@
         <div class="extra-text">don't have an account? </div>             
 	<button class="btn btn-outline-success mt-4 mb-2 form-control" onClick=window.location="{% url 'profiles:signup' %}">Signup</button>
 </form>
+</main>
 
 {% endblock content %}

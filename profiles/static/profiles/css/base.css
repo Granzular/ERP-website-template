@@ -1,11 +1,24 @@
+main{
+  display: flex;
+  justify-content: center;
+}
 form{
   border-style:solid;
   border-radius: 15px;
   border-width:0.5px;
   padding: 5px;
 }
-.extra-text{
+.extra-text,form h1{
   /*targets the div tag that holds extra text in the form*/
   text-align: center;
 }
+.btn {
+  border-radius: 20px;
+}
+input {
+  border-radius: 20px;
+}
 
+@media screen(min-width:600px){
+  width:50vh;
+}x

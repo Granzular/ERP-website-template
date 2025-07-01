@@ -2,11 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-    CHOICES = [
+    CHOICES = (
             ('org','organization'),
             ('staff','staff'),
-            ]
-    user_type = models.CharField(max_length=12,choices=CHOICES,blank=False)
+            )
+    user_type = models.CharField(max_length=12,choices=CHOICES,blank=False,null=False)
 
 
 class Organization(models.Model):
