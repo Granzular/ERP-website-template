@@ -17,9 +17,13 @@ Profile
     <img id="profile-picx" src="{{user.staff.avatar.url}}">
    </div>
  </div>
+
 <div>
+ {% if user.staff %}
+
   <div id="frame1" class="bg-body-tertiary">
-    <img id="profile-pic" src="{{user.staff.avatar.url}}"><i class="fa-solid fa-pen-to-square" id="edit-profile-pic"></i>
+   <i class="fa-solid fa-pen-to-square" id="edit-profile-pic"></i>
+    <img id="profile-pic" src="{{user.staff.avatar.url}}">
    
    <form enctype="multipart/form-data" method="POST" action="{% url 'profiles:edit_profile_pic' %}" hidden="true" id="profile_pic_form">
     {% csrf_token %}
@@ -32,5 +36,29 @@ Profile
   
   <p><b>Role:</b>Staff</p>
    <p><b>Organization:</b>{{user.staff.organization.name}}</p>
+
+
+{% else %}
+{% if user.organization %}
+
+ 
+  <div id="frame1" class="bg-body-tertiary">
+    <img id="profile-pic" src="{{user.organization.logo.url}}"><i class="fa-solid fa-pen-to-square" id="edit-profile-pic"></i>
+   
+   <form enctype="multipart/form-data" method="POST" action="{% url 'profiles:edit_profile_pic' %}" hidden="true" id="profile_pic_form">
+    {% csrf_token %}
+   <input name="profile_pic" type="file" accept=".png" hidden id="fileupload" >
+    
+   </form>
+   <h2>{{user.organization.user.username}}</h2>
+  </div>
+  <div id="frame2"></div>
+  
+   <p><b>Organization Name:</b>{{user.organization.name}}</p>
+   <p><b>Public Key:</b>{{user.organization.public_key}}</p>
+
+
+{% endif %}
+{% endif %}
 </div>
 {% endblock content %}

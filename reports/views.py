@@ -15,7 +15,10 @@ class ReportList(ListView):
     context_object_name = "reports"
 
     def get_queryset(self):
-        qs = Report.objects.filter(organization = self.request.user.staff.organization)
+        try:
+            qs = Report.objects.filter(organization = self.request.user.staff.organization)
+        except:
+            qs = Report.objects.filter(organization = self.request.user.organization)
         return qs
 
 @method_decorator(login_required,name="dispatch")
@@ -24,6 +27,10 @@ class ReportDetail(DetailView):
     model = Report
     template_name = "reports/detail.html"
     context_object_name = "report"
+
+    def get_object(self):
+        obj = Report.objects.get(pk=self.pk)
+        return obj
 
 @login_required
 def pdf(request,pk):
@@ -42,9 +49,7 @@ def add_report(request):
         image = get_report_image(request.POST.get('image'))
         author = Staff.objects.get(user=request.user)
         Report.objects.create(name=name,remark=remark,image=image,author=author,organization=org)
-        print(name)
+        
 
         return JsonResponse({'msg':'send'})
-    else:
-        print("OUTSIDE CONDITION")
 

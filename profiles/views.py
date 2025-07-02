@@ -10,6 +10,7 @@ from django.urls.exceptions import Resolver404
 from urllib.parse import urlparse
 from .utils import get_org
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 @login_required
 def home(request):
@@ -38,8 +39,10 @@ def edit_profile_pic(request):
 def loginview(request):
     if request.method == "GET":
         form = LoginForm()
+        msg = list(messages.get_messages(request))
         context = {
                 'login_form':form,
+                'msg':msg,
                 }
         return render(request,"profiles/login.html",context)
 
@@ -56,9 +59,9 @@ def loginview(request):
                         resolve(urlparse(next_url).path)
                         return redirect(next_url)
                     except Resolver404:
-                        return redirect(reverse("sales:index"))
+                        return redirect(reverse("index:index"))
                 else:
-                    return redirect(reverse("sales:index"))
+                    return redirect(reverse("index:index"))
             else:
                 context = {
                         'error':'Invalid username or password',
@@ -91,14 +94,19 @@ def signupview(request):
                 'signup_form':form
                 }
         return render(request,'profiles/signup.html',context)
+
     elif request.method == "POST":
         if form.is_valid():
             cld = form.clean()
+
             if cld.get('user_type')=='org':
                 CustomUser.objects.create_user(username=cld.get('username'),email=cld.get('email'),password=cld.get('password'),user_type=cld.get('user_type'))
+
             elif cld.get('user_type')=='staff':
                 instance = CustomUser.objects.create_user(username=cld.get('username'),email=cld.get('email'),password=cld.get('password'),user_type=cld.get('user_type'))
                 Staff.objects.create(user=instance,organization=get_org(cld.get('public_key')))
+
+            messages.success(request,"Account Created successfully, proceed to login!")
 
             return redirect(reverse('profiles:login'))
         else:

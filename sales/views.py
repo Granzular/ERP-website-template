@@ -21,7 +21,10 @@ def home_view(request):
     chart = None
     no_data = None
     if request.method == "POST":
-        org = request.user.staff.organization
+        try:
+            org = request.user.staff.organization
+        except:
+            org = request.user.organization
         date_from = request.POST.get("date_from")
         date_to = request.POST.get("date_to")
         chart_type = request.POST.get("chart_type")
@@ -72,7 +75,7 @@ def home_view(request):
 class SalesDashboard(View):
 
     def get(self,request):
-        return render(request,"sales/main.html")
+        return render(request,"sales/dashboard.html")
 
    
 class SaleDetailView(DetailView):

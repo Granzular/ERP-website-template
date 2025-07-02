@@ -30,12 +30,13 @@
 <nav class="navbar-expand-lg bg-body-tertiary ">
   <div class="container-fluid navcontainer">
     <div class="frame1">
-      <b>   {{user.staff.organization.name}}
+      <b>  
+        {{user.organization.name}}     {{user.staff.organization.name}}
       </b>
     </div>
     <div class="frame2">
       {% if user.is_authenticated %}
-      <a href="{% url 'profiles:home' %}"><img src="{{user.staff.avatar.url}}"></a>
+      <a href="{% url 'profiles:home' %}"><img src="{{user.staff.avatar.url}}{{user.organization.logo.url}}"></a>
       <a href="{% url 'profiles:logout' %}" class="btn">logout</a>
       {% else %}
       <img src="">

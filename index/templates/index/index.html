@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
+
+{% if user.is_authenticated %}
+
 <p style="font-size:2em;">
-Welcome to reports Alchemy <b>{{user.staff.user.username}}</b>
+Welcome to reports Alchemy <b>
+  
+{{user.username}} </b>
 </p>
+{% else %}
+<p style="font-size:2em;">
+Welcome to reports Alchemy
+</p>
+<p>If you do not wish to create an account, you can explore with the demo account.</p>
+<p>username for organization: Demo_Organization</p>
+<p>username for staff: Demo_Staff</p>
+<p>password for both: demopassword</p>
+
+{% endif %}
+
 {% endblock content %}

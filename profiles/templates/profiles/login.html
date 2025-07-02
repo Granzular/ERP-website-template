@@ -11,6 +11,11 @@
 {% include 'profiles/navbar.html' %}
 {% endblock navbar %}                                                                               {% block content %}     
 <main>
+	{% if msg %}
+	<div class="alert alert-info" role="alert" >
+		{{msg}}
+	</div>
+	{% endif %}
 <form action="" method="POST" class="form mt-5">
 	<h1>Login</h1>
 	{% csrf_token %}

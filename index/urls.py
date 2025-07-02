@@ -5,5 +5,5 @@ app_name = "index"
 
 urlpatterns = [
 
-        path('',views.home,name="home"),
+        path('',views.index,name="index"),
         ]
