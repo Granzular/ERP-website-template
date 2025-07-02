@@ -1,0 +1,40 @@
+.sidebar{
+    float: left;
+    height: 100vh;
+    width:10em;
+}
+
+.top-frame{
+    width: 100%;
+    height: 15em;
+    display: flex;
+    border-style: solid;
+    background-color:aliceblue;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+}
+.top-frame-cell{
+    margin: 5px;
+    width: 50%;
+    height: 100%;
+    border-style: solid;
+}
+
+.main-frame{
+    width: 100%;
+    height: 100vh;
+    background-color:azure;
+}
+/*
+@media screen  and (max-width:768px) {
+    .top-frame{
+        flex-wrap: wrap;
+    }
+    .top-frame-cell{
+        
+    }
+    
+}*/

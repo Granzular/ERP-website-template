@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Report
 from django.views.generic import DetailView, ListView
+from django.views import View
 from profiles.models import Staff,Organization
 from django.http import JsonResponse,FileResponse
 from .utils import get_report_image, get_report_pdf, cleanup
@@ -22,15 +23,21 @@ class ReportList(ListView):
         return qs
 
 @method_decorator(login_required,name="dispatch")
-class ReportDetail(DetailView):
+class ReportDetail(View):
 
-    model = Report
-    template_name = "reports/detail.html"
-    context_object_name = "report"
+    def get(self,request,pk):
+        try:
+            org = request.user.staff.organization
+            """ Due to configuration of the profile and custom user model, we have to try to access the organization based on the user type"""
+        except:
+            org = request.user.organization
+        
+        report = Report.objects.get(pk=pk,organization=org)
+        context = {
+            "report":report,
+        }
+        return render(request,"reports/detail.html",context)
 
-    def get_object(self):
-        obj = Report.objects.get(pk=self.pk)
-        return obj
 
 @login_required
 def pdf(request,pk):

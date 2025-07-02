@@ -18,7 +18,8 @@ form{
 input {
   border-radius: 20px;
 }
-
-@media screen(min-width:600px){
-  width:50vh;
-}x
+@media screen and (min-width:768px) {
+  form{
+    width: 60em;
+  }
+}

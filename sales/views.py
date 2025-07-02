@@ -75,6 +75,7 @@ def home_view(request):
 class SalesDashboard(View):
 
     def get(self,request):
+        
         return render(request,"sales/dashboard.html")
 
    

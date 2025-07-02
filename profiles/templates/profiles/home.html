@@ -22,7 +22,7 @@ Profile
  {% if user.staff %}
 
   <div id="frame1" class="bg-body-tertiary">
-   <i class="fa-solid fa-pen-to-square" id="edit-profile-pic"></i>
+   <i class="fa-solid fa-pen-to-square" id="edit-profile-pic">edit pic</i>
     <img id="profile-pic" src="{{user.staff.avatar.url}}">
    
    <form enctype="multipart/form-data" method="POST" action="{% url 'profiles:edit_profile_pic' %}" hidden="true" id="profile_pic_form">

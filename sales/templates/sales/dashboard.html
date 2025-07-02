@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 sales list
 {% endblock title %}
 
-{% block content %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'sales/css/dashboard.css' %}">
+{% endblock style %}
 
+{% block content %}
+<nav class="sidebar">
+    <ul >
+       <li>1</li>
+       <li>2</li>
+       <li>3</li>
+    </ul>
+</nav>
+<section class="top-frame" >
+    <div class="top-frame-cell"></div>
+    <div class="top-frame-cell"></div>
+    
+</section >
+
+<section class="main-frame" >
+    <div class="chart"></div>
+</section>
 {% endblock content %}
