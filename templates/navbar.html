@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-secondary">
+<nav class="navbar navbar-expand-lg bg-body-secondary fixed-top">
   <div class="container-fluid">
    <a class="navbar-brand navbrand" style="color:green;" href="/">Reports Alchemy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +27,14 @@
   </div>
 </nav>
 <!-- Custom Nav-->
-<nav class="navbar-expand-lg bg-body-tertiary ">
+<nav class="custom-navbar navbar-expand-lg bg-body-tertiary fixed-top ">
   <div class="container-fluid navcontainer">
     <div class="frame1">
       <b>  
         {{user.organization.name}}     {{user.staff.organization.name}}
       </b>
+     
+    
     </div>
     <div class="frame2">
       {% if user.is_authenticated %}

@@ -10,6 +10,7 @@
     height: 100vh;
     margin: 0;
     padding: 0;
+    margin-top: 20vh ;
     left:0;
     right: 0;
     border-style: none;
@@ -38,11 +39,17 @@
     padding: 0%;
 
  }
+ .sidebar-btn{
+   /* the class is in the navbar.html*/
+   display: none;
+   position: fixed;
+   padding: 0;
+ }
 
  .top-section{
     display: flex;
     width:100%;
-    height: 15%;
+    height: 10%;
     border-style: none;
  }
 
@@ -57,7 +64,7 @@
 
  .main-section{
     width: 100%;
-    height: 85%;
+    height: 90%;
     border-style: hidden;
     box-shadow: 1px 1px 5px #ababab;
     background-color: white;
@@ -66,18 +73,28 @@
     
  }
  
-
-
+ 
  
 @media screen  and (max-width:768px) {
-    body{
-        background-color: aqua;
-    }
-    .sidebar{
+    .hidden{
       display: none;
+    }
+    .sidebar-alt{
+      position: fixed;
+      width: 30vw;
     }
     .content-container{
       width:100vw;
+    }
+    .top-section{
+      height: 10%;
+    }
+    .top-section-box{
+      height: 90%;
+    }
+    .sidebar-btn{
+      display: block;
+      padding: 0;
     }
 
 }

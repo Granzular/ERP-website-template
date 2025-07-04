@@ -1,4 +1,7 @@
 /* Navbar */
+.custom-navbar{
+	margin-top: 10vh;
+}
 .nav-item .active {
 	 background-color: green;
 	 border-radius: 10px;

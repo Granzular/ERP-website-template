@@ -8,14 +8,20 @@ sales list
 <link rel="stylesheet" href="{% static 'sales/css/dashboard.css' %}">
 {% endblock style %}
 
+{% block scripts %}
+<script type="text/javascript" src="{% static 'sales/js/dashboard.js' %}" ></script>
+{% endblock scripts %}
+
 {% block content %}
-<nav class="sidebar">
+ 
+<nav class="sidebar hidden  sidebar-alt">
     <h2 class="sidebar-title">Dashboard</h2>
     <ul>
         <li>Sales</li>
         <li>Reports</li>
     </ul>
 </nav>
+
 <div class="content-container">
 <div class="top-section">
     <div class="top-section-box"></div>
@@ -23,5 +29,8 @@ sales list
     <div class="top-section-box"></div>
 </div>
 <div class="main-section"></div>
+</div>
+<div hidden>
+    <button class="btn btn-outline-success sidebar-btn">dash</button>
 </div>
  {% endblock content %}
