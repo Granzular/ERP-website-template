@@ -31,6 +31,7 @@ def get_graph():
     return graph
 
 def get_chart(chart_type,result_by,d,**kwargs):
+    plt.style.use('bmh')
     plt.switch_backend('AGG')
     plt.figure(figsize=(10,4))
     key = (lambda x:"transaction_id" if x=="#1" else "created" if x=="#2" else None )(result_by)

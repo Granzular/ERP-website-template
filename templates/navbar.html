@@ -37,10 +37,10 @@
     <div class="frame2">
       {% if user.is_authenticated %}
       <a href="{% url 'profiles:home' %}"><img src="{{user.staff.avatar.url}}{{user.organization.logo.url}}"></a>
-      <a href="{% url 'profiles:logout' %}" class="btn">logout</a>
+      <a href="{% url 'profiles:logout' %}" class="btn btn-outline-success">logout</a>
       {% else %}
       <img src="">
-      <a href="{% url 'profiles:login' %}">login</a>
+      <a href="{% url 'profiles:login' %}" class="btn btn-success">login</a>
       {% endif %}
     </div>
   </div>
