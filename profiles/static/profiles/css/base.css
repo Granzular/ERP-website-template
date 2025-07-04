@@ -7,6 +7,7 @@ form{
   border-radius: 15px;
   border-width:0.5px;
   padding: 5px;
+  width: 50vw;
 }
 .extra-text,form h1{
   /*targets the div tag that holds extra text in the form*/
@@ -20,6 +21,6 @@ input {
 }
 @media screen and (min-width:768px) {
   form{
-    width: 60em;
+    width: 10em;
   }
 }

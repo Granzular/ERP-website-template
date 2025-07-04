@@ -10,19 +10,18 @@ sales list
 
 {% block content %}
 <nav class="sidebar">
-    <ul >
-       <li>1</li>
-       <li>2</li>
-       <li>3</li>
+    <h2 class="sidebar-title">Dashboard</h2>
+    <ul>
+        <li>Sales</li>
+        <li>Reports</li>
     </ul>
 </nav>
-<section class="top-frame" >
-    <div class="top-frame-cell"></div>
-    <div class="top-frame-cell"></div>
-    
-</section >
-
-<section class="main-frame" >
-    <div class="chart"></div>
-</section>
-{% endblock content %}
+<div class="content-container">
+<div class="top-section">
+    <div class="top-section-box"></div>
+    <div class="top-section-box"></div>
+    <div class="top-section-box"></div>
+</div>
+<div class="main-section"></div>
+</div>
+ {% endblock content %}

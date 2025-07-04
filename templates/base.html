@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     
     <!--favicon-->
+    <!--google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Roboto">
     <!--font awesome icon-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <!--bootstrap-->
@@ -20,7 +22,8 @@
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
     <!-- custom js and css-->
     <link rel="stylesheet" href="{% static 'sales/css/style.css' %}">
-      <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
     <script src="{% static 'js/navbar.js' %}" defer></script>
     
     {% block scripts %}

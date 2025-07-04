@@ -26,7 +26,7 @@
 	 height: 30px;
 	 border-radius: 50%;
 	 border-style:solid;
-	 border-color:green;
+	 border-color:#ababab;
 	 padding: 0;
 	 margin: 0;
 }
@@ -37,10 +37,15 @@
 	 margin: 0;
 }
 
+.frame2 .btn {
+	border-radius: 15px;
+	width:5em;
+}
+
 .navbrand{
 	 /* bootstrap class*/
 	 color:green;
-	 font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	 font-style:italic;
+	 font-family:'Sofia', sans-serif;
+	 font-shadow: 4px 4px 4px #ababab
 }
 
