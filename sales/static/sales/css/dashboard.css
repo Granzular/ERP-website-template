@@ -3,7 +3,7 @@
     --brand-color-light:  rgb(212, 247, 210);
  }
  
- .container{
+ .cont{
     display:flex;
     flex-direction: row;
     width: 100%;
@@ -14,6 +14,7 @@
     right: 0;
     border-style: none;
     flex-grow: 1;
+    border-style: solid;
  }
 
  .sidebar{
@@ -72,7 +73,11 @@
     body{
         background-color: aqua;
     }
-    .top-section{
-        flex-wrap: wrap;
+    .sidebar{
+      display: none;
     }
+    .content-container{
+      width:100vw;
+    }
+
 }
