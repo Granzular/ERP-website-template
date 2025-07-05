@@ -19,6 +19,9 @@ form{
 input {
   border-radius: 20px;
 }
+.cont {
+  margin-top: 35vh;
+}
 @media screen and (min-width:768px) {
   form{
     width: 10em;

@@ -9,11 +9,11 @@ function registerEvents(e){
        let sidebar = document.querySelector(".sidebar");
        if (sidebar.classList.contains("hidden")){
         sidebar.classList.remove("hidden");
-        console.log("removed");
+         document.getElementsByClassName("sidebar-icon")[0].src = "/media/icon/closeicon.png"
        }
        else{
         sidebar.classList.add("hidden");
-        console.log("added");
+         document.getElementsByClassName("sidebar-icon")[0].src = "/media/icon/menuicon.png"
        }
     },false);
 

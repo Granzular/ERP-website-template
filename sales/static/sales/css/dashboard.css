@@ -15,14 +15,13 @@
     right: 0;
     border-style: none;
     flex-grow: 1;
-    border-style: solid;
  }
 
  .sidebar{
     float:left;
     height: 100em;
-    width: 25vw;
-    background-color: var(--brand-color-light)
+    width: 30vw;
+    background-color: var(--brand-color-light);
  }
  .sidebar-title{
     font-weight: bold;
@@ -81,7 +80,7 @@
     }
     .sidebar-alt{
       position: fixed;
-      width: 30vw;
+      width: 60vw;
     }
     .content-container{
       width:100vw;
@@ -95,6 +94,10 @@
     .sidebar-btn{
       display: block;
       padding: 0;
+    }
+     .sidebar-btn img{
+      width: 25px;
+      height: 25px;
     }
 
 }
