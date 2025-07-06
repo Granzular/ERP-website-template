@@ -4,6 +4,9 @@
 report list
 {% endblock title %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'reports/style.css' %}">
+{% endblock styles %}
 {% block scripts %}
 <script src="{% static 'reports/js/pdf.js' %}"></script>
 {% endblock scripts %}

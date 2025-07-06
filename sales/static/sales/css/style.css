@@ -1,13 +1,15 @@
 *{
 	margin:5px;
 }
-body{
-	
-}
-
 
 
 /* Main body style */
 .table-and-chart{
 	overflow-x:scroll;
+}
+
+@media screen and(max-width: 786px) {
+	.dropzone{
+		width:80%;
+	}
 }

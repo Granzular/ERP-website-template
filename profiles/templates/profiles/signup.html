@@ -11,7 +11,7 @@ signup
 
 {% block content %}
 <main>
-<form action="" method="POST" class="form mt-5">
+<form action="" method="POST" class="myform mt-5">
 	<h1>Signup</h1>
 	{% csrf_token %}
 	{% if  error %}
@@ -33,7 +33,7 @@ signup
 		
 	<button type="submit" class="btn btn-success mt-4 form-control"> Signup </button>
 	<div class="extra-text"> already have an account?</div>
-	<button class="btn btn-outline-success mt-4 mb-2 form-control" onClick=window.location="{% url 'profiles:login' %}">Login</button>
+	<a href="{% url 'profiles:login' %}" class="btn btn-outline-success mt-4 mb-2  form-control signup-login-a" >Login</a>
 </form>
 	</main>
 

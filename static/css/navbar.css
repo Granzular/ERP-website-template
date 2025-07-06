@@ -5,6 +5,7 @@
 }
 .custom-navbar{
 	margin-top: 15vh;
+	z-index: 2000;
 }
 .nav-item .active {
 	 background-color: green;
