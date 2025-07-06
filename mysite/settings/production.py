@@ -36,7 +36,7 @@ CSRF_TRUSTED_ORIGINS=[
 DATABASES = {
         'default':{
             'ENGINE':'django.db.backends.sqlite3',
-            'NAME':'/home/vendora/vendora.pythonanywhere.com/portfolio-/sqlite3.db'
+            'NAME':'/home/reportsalchemy/ERP-website-template/sqlite3.db'
             },
     'main_default': {    
         'ENGINE': 'django.db.backends.postgresql',
