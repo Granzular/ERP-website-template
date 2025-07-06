@@ -36,7 +36,7 @@ CSRF_TRUSTED_ORIGINS=[
 DATABASES = {
         'default':{
             'ENGINE':'django.db.backends.sqlite3',
-            'NAME':'/home/reportsalchemy/ERP-website-template/sqlite3.db'
+            'NAME':'/home/reportsalchemy/ERP-website-template/db.sqlite3'
             },
     'main_default': {    
         'ENGINE': 'django.db.backends.postgresql',
