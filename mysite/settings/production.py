@@ -9,7 +9,7 @@ import os, secrets
 and easy maintenance
 """
 
-web_host = 'vendora.pythonanywhere.com'
+web_host = 'reportsalchemy.pythonanywhere.com'
 
 # SECRET KEY GENERATION
 SECRET_KEY = os.getenv('SECRET_KEY')
