@@ -41,7 +41,7 @@
       <a href="{% url 'profiles:home' %}"><img src="{{user.staff.avatar.url}}{{user.organization.logo.url}}"></a>
       <a href="{% url 'profiles:logout' %}" class="btn btn-outline-success">logout</a>
       {% else %}
-      <img src="">
+      <img src="/media/no_headshot.png" style="filter:grayscale(100%);">
       <a href="{% url 'profiles:login' %}" class="btn btn-success">login</a>
       {% endif %}
     </div>
