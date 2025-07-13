@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'index/css/style.css' %}">
+{% endblock style %}
 {% block content %}
 
 {% if user.is_authenticated %}
@@ -8,6 +12,10 @@ Welcome to reports Alchemy <b>
   
 {{user.username}} </b>
 </p>
+<a href="{% url 'sales:dashboard' %} " class="btn btn-warning cta">Dashboard</a>
+
+<a href="{% url 'reports:index' %}" class="btn btn-warning cta" >View Reports</a>
+<a href="{% url 'sales:home' %}" class="btn btn-warning cta">Generate report</a>
 {% else %}
 <p style="font-size:2em;">
 Welcome to Reports Alchemy

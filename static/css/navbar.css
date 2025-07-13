@@ -49,10 +49,42 @@
 	width:5em;
 }
 
+
+@keyframes slide{
+    1%{
+      transform:translateX(0px)  rotate(0deg) ;
+    }
+    50%{
+      transform:translateX(150px) rotate(360deg) ;
+    }
+      60%{
+        transform:translateX(155px) rotate(0deg);
+      }
+      100%{
+        transform: transateX(0px);
+      }
+  }
+ @keyframes roll{
+   from{transform:translateY(0px);}
+   to{transform:translateY(10px);}
+ }
 .navbrand{
 	 /* bootstrap class*/
 	 color:green;
 	 font-family:'Sofia', sans-serif;
-	 font-shadow: 4px 4px 4px #ababab
+	 text-shadow: 0px 0px 4px #777;
+	 left:250px;
+	 
 }
+.navbrand-R{
+	color:green;
+	font-family:'Sofia', sans-serif;
+	text-shadow: 0px 0px 4px #777;
+	position: absolute;
+	top: 10px;
+	animation: slide 3s,roll 2s 3s;
+	animation-fill-mode: forwards;
+	
+}
+
 
